@@ -5,7 +5,13 @@
 
   imports = [ ./fish-fix.nix ];
 
-  environment.shells = [ pkgs.fish ];
+  environment = {
+    shells = [ pkgs.fish ];
+    variables = {
+      LANG = "en_US.UTF-8";
+      EDITOR = "vim";
+    };
+  };
 
   security.pam.enableSudoTouchIdAuth = true;
 

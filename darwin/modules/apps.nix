@@ -2,49 +2,7 @@
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
-    age
-    cargo
     coredns
-    deno
-    edgedb
-    ffmpeg
-    fzf
-    gallery-dl
-    git-lfs
-    go
-    graphviz
-    helmfile
-    htop
-    httpie
-    imagemagick
-    irssi
-    jq
-    krew
-    kustomize
-    mediainfo
-    meson
-    mkcert
-    ncdu
-    nil
-    nixpkgs-fmt
-    nodejs
-    perl538Packages.LatexIndent
-    pipx
-    pkg-config
-    poetry
-    python3
-    ranger
-    rclone
-    rustc
-    sops
-    stern
-    tectonic
-    tree
-    typst
-    uv
-    wget
-    yq
-    yt-dlp
   ];
 
   homebrew = {
@@ -65,7 +23,6 @@
       "font-amaranth"
       "keka"
       "macfuse"
-      "mpv"
       "musicbrainz-picard"
       "rancher"
       "spotify"
