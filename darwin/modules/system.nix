@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, username, ... }: {
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs.zsh.enable = true; # default shell on catalina
   programs.fish.enable = true;
@@ -12,5 +12,10 @@
   system.defaults = {
     ".GlobalPreferences"."com.apple.mouse.scaling" = -1.0;
     screencapture.disable-shadow = true;
+  };
+
+  users.users.${username} = {
+    home = "/Users/${username}";
+    shell = pkgs.fish;
   };
 }

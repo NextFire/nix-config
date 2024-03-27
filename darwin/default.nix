@@ -2,6 +2,7 @@
 let
   hostname = "MacBook-Pro-de-Nam";
   hostPlatform = "x86_64-darwin";
+  username = "namvu";
 in
 {
   # Build darwin flake using:
@@ -11,8 +12,15 @@ in
       ./modules/nix-core.nix
       ./modules/system.nix
       ./modules/apps.nix
+
+      inputs.home-manager.darwinModules.home-manager
+      {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users.${username} = import ../home;
+      }
     ];
-    specialArgs = { inherit inputs hostname hostPlatform; };
+    specialArgs = { inherit inputs hostname hostPlatform username; };
   };
 
   # Expose the package set, including overlays, for convenience.
