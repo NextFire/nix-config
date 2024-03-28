@@ -33,7 +33,6 @@
     edgedb
     ffmpeg
     go
-    graphviz
     helmfile
     httpie
     imagemagick
@@ -43,11 +42,9 @@
     kustomize
     mediainfo
     meson
-    mkcert
     nil
     nixpkgs-fmt
     nodejs
-    perl538Packages.LatexIndent
     pipx
     pkg-config
     python3
