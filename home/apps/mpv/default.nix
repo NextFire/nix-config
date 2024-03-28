@@ -1,10 +1,9 @@
 { pkgs, config, ... }:
 let
-  link = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/home/apps/mpv/${path}";
   linkSecret = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/secrets/mpv/${path}";
+  scriptPath = script: "${script}/share/mpv/scripts/${script.scriptName}";
 in
 {
-  home.file.".config/mpv/scripts/autoload.lua".source = link "autoload.lua";
   home.file.".config/mpv/scripts/japan7.lua".source = linkSecret "japan7.lua";
 
   programs.mpv = {
@@ -29,6 +28,8 @@ in
       "F" = "sub-reload";
     };
     config = {
+      scripts = scriptPath pkgs.mpvScripts.autoload;
+
       #General
       # vo = "gpu";
       # gpu-api = "opengl";
