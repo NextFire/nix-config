@@ -1,9 +1,7 @@
 { pkgs, ... }: {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [
-    coredns
-  ];
+  environment.systemPackages = with pkgs; [ ];
 
   homebrew = {
     enable = true;
@@ -46,21 +44,6 @@
       "Refined GitHub" = 1519867270;
       "Userscripts-Mac-App" = 1463298887;
       "WireGuard" = 1451685025;
-    };
-  };
-
-  launchd.daemons = {
-    coredns = {
-      serviceConfig = {
-        ProgramArguments = [
-          "${pkgs.coredns}/bin/coredns"
-          "-conf"
-          "/usr/local/etc/coredns/Corefile"
-        ];
-        RunAtLoad = true;
-        StandardOutPath = "/usr/local/var/log/coredns.log";
-        StandardErrorPath = "/usr/local/var/log/coredns.log";
-      };
     };
   };
 }

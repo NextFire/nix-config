@@ -2,7 +2,6 @@
   imports = [
     ./aegisub
     ./ansible
-    ./coredns
     ./fish
     ./fonts
     ./git
