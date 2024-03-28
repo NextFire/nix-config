@@ -1,3 +1,10 @@
+init:
+    nix run nix-darwin -- switch --flake .
+
+update:
+    nix-channel --update
+    darwin-rebuild switch --flake .
+
 secrets-archive:
     tar cvfz secrets.tar.gz secrets/
     age -r age1p6dku6ru5c8u5enlzx2neg2l7l508adl3kxlq5mhpcjvx2vpt9gqjgjg7c secrets.tar.gz > secrets.tar.gz.age
