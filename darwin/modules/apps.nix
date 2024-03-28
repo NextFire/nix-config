@@ -1,9 +1,7 @@
 { pkgs, ... }: {
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [
-    vim
-  ];
+  environment.systemPackages = with pkgs; [ ];
 
   homebrew = {
     enable = true;
@@ -31,7 +29,6 @@
       "vagrant"
       "virtualbox"
       "visual-studio-code"
-      "vmware-fusion"
     ];
     masApps = {
       "AdGuard for Safari" = 1440147259;
