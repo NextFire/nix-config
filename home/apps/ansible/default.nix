@@ -1,9 +1,9 @@
 { pkgs, config, ... }:
 let
-  link = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/home/apps/ansible/${path}";
+  utils = import ../../utils.nix { appDir = ./.; inherit config; };
 in
 {
-  home.file.".ansible.cfg".source = link ".ansible.cfg";
+  home.file.".ansible.cfg".source = utils.link ./.ansible.cfg;
 
   home.packages = [ pkgs.ansible ];
 }

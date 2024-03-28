@@ -1,11 +1,11 @@
 { config, ... }:
 let
-  link = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/home/apps/aegisub/${path}";
+  utils = import ../../utils.nix { appDir = ./.; inherit config; };
 in
 {
   home.file = {
-    "Library/Application Support/Aegisub/automation".source = link "automation";
-    "Library/Application Support/Aegisub/catalog".source = link "catalog";
-    "Library/Application Support/Aegisub/hotkey.json".source = link "hotkey.json";
+    "Library/Application Support/Aegisub/automation".source = utils.link ./automation;
+    "Library/Application Support/Aegisub/catalog".source = utils.link ./catalog;
+    "Library/Application Support/Aegisub/hotkey.json".source = utils.link ./hotkey.json;
   };
 }

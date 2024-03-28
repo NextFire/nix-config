@@ -1,9 +1,9 @@
 { config, ... }:
 let
-  linkSecret = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/secrets/fish/${path}";
+  utils = import ../../utils.nix { appDir = ./.; inherit config; };
 in
 {
-  home.file.".config/fish/functions/hikari.fish".source = linkSecret "hikari.fish";
+  home.file.".config/fish/functions/hikari.fish".source = utils.linkSecret ./hikari.fish;
 
   programs.fish = {
     enable = true;

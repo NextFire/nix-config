@@ -1,9 +1,9 @@
 { config, ... }:
 let
-  link = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/home/apps/git/${path}";
+  utils = import ../../utils.nix { appDir = ./.; inherit config; };
 in
 {
-  home.file.".config/git/allowed_signers".source = link "allowed_signers";
+  home.file.".config/git/allowed_signers".source = utils.link ./allowed_signers;
 
   programs.git = {
     enable = true;

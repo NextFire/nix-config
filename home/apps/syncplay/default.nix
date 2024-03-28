@@ -1,7 +1,7 @@
 { config, ... }:
 let
-  linkSecret = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/secrets/syncplay/${path}";
+  utils = import ../../utils.nix { appDir = ./.; inherit config; };
 in
 {
-  home.file.".config/syncplay.ini".source = linkSecret "syncplay.ini";
+  home.file.".config/syncplay.ini".source = utils.linkSecret ./syncplay.ini;
 }

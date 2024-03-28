@@ -1,7 +1,7 @@
 { config, ... }:
 let
-  link = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/home/apps/ansible/${path}";
+  utils = import ../../utils.nix { appDir = ./.; inherit config; };
 in
 {
-  home.file."Library/Fonts/WIX-CookHandStd-R.otf".source = link "WIX-CookHandStd-R.otf";
+  home.file."Library/Fonts/WIX-CookHandStd-R.otf".source = utils.link ./WIX-CookHandStd-R.otf;
 }

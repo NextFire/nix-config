@@ -1,10 +1,10 @@
 { pkgs, config, ... }:
 let
-  linkSecret = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/secrets/mpv/${path}";
+  utils = import ../../utils.nix { appDir = ./.; inherit config; };
   scriptPath = script: "${script}/share/mpv/scripts/${script.scriptName}";
 in
 {
-  home.file.".config/mpv/scripts/japan7.lua".source = linkSecret "japan7.lua";
+  home.file.".config/mpv/scripts/japan7.lua".source = utils.linkSecret ./japan7.lua;
 
   programs.mpv = {
     enable = true;

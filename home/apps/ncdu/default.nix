@@ -1,9 +1,9 @@
 { pkgs, config, ... }:
 let
-  link = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/home/apps/ncdu/${path}";
+  utils = import ../../utils.nix { appDir = ./.; inherit config; };
 in
 {
-  home.file.".config/ncdu/config".source = link "config";
+  home.file.".config/ncdu/config".source = utils.link ./config;
 
   home.packages = [ pkgs.ncdu ];
 }
