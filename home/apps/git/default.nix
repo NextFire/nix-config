@@ -71,6 +71,10 @@ in
       "Network Trash Folder"
       "Temporary Items"
       ".apdisk"
+
+      # direnv
+      ".direnv"
+      ".envrc"
     ];
   };
 }

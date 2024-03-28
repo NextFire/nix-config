@@ -1,10 +1,5 @@
-{ pkgs, mkShell }:
-{
-  python = mkShell (with pkgs; [
-    python3
-  ]);
-
-  node = mkShell (with pkgs; [
-    nodejs
+{ pkgs, mkShell }: {
+  py311 = mkShell (with pkgs;  [
+    python311
   ]);
 }

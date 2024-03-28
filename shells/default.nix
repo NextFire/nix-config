@@ -9,9 +9,7 @@ in
   devShells = forAllSystems
     ({ pkgs }:
       let
-        common = with pkgs; [
-          git
-        ];
+        common = with pkgs; [ ];
 
         mkShell = deps: pkgs.mkShell {
           packages = common ++ deps;

@@ -18,6 +18,7 @@
   ];
 
   programs = {
+    direnv = { enable = true; };
     fzf = { enable = true; };
     gallery-dl = { enable = true; };
     irssi = { enable = true; };
@@ -30,6 +31,7 @@
     age
     cargo
     deno
+    docker-client
     edgedb
     ffmpeg
     go
@@ -39,16 +41,19 @@
     just
     krew
     kubectl
+    kubernetes-helm
     kustomize
     mediainfo
     meson
     nil
     nixpkgs-fmt
-    nodejs
+    nodejs_20
+    pandoc
     pipx
     pkg-config
-    python3
+    python312
     rustc
+    sops
     stern
     tectonic
     tree
