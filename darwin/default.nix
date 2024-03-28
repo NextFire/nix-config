@@ -9,16 +9,10 @@ in
   # $ darwin-rebuild build --flake .#${hostname}
   darwinConfigurations.${hostname} = inputs.nix-darwin.lib.darwinSystem {
     modules = [
+      ./modules/apps.nix
+      ./modules/home-manager.nix
       ./modules/nix-core.nix
       ./modules/system.nix
-      ./modules/apps.nix
-
-      inputs.home-manager.darwinModules.home-manager
-      {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.users.${username} = import ../home;
-      }
     ];
     specialArgs = { inherit inputs hostname hostPlatform username; };
   };

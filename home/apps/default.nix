@@ -10,7 +10,11 @@
     ./mpv
     ./ncdu
     ./poetry
+    ./rclone
+    ./sops
+    ./ssh
     # ./starship
+    ./syncplay
     ./yt-dlp
   ];
 
@@ -34,6 +38,7 @@
     helmfile
     httpie
     imagemagick
+    just
     krew
     kubectl
     kustomize
@@ -47,9 +52,7 @@
     pipx
     pkg-config
     python3
-    rclone
     rustc
-    sops
     stern
     tectonic
     tree

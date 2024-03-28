@@ -1,4 +1,10 @@
+{ config, ... }:
+let
+  linkSecret = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.nix-config/secrets/fish/${path}";
+in
 {
+  home.file.".config/fish/functions/hikari.fish".source = linkSecret "hikari.fish";
+
   programs.fish = {
     enable = true;
     loginShellInit =
@@ -23,32 +29,12 @@
       sd = "rclone mount steamdeck:/run/media/mmcblk0p1 ~/rclone --vfs-cache-mode writes";
     };
     shellAliases = {
-      dotfiles = "git --git-dir=$HOME/.git_dotfiles/ --work-tree=$HOME";
       history-backup = ''rclone copyto $HOME/.local/share/fish/fish_history jotta-crypt:local_secrets/(python3 -c "import socket; print(socket.gethostname())")/fish_history -P'';
     };
     functions = {
       fish_user_key_bindings = ''
         fzf_key_bindings
         bind © fzf-cd-widget
-      '';
-      secrets-commit = ''
-        set PRE_PWD (pwd)
-        cd $HOME
-        tar cvfz .secrets.tar.gz .secrets/
-        age -r age1p6dku6ru5c8u5enlzx2neg2l7l508adl3kxlq5mhpcjvx2vpt9gqjgjg7c .secrets.tar.gz > .secrets.tar.gz.age
-        rm .secrets.tar.gz
-        dotfiles add .secrets.tar.gz.age
-        cd $PRE_PWD
-        dotfiles status
-      '';
-      secrets-restore = ''
-        set PRE_PWD (pwd)
-        cd $HOME
-        age -d -i ~/.dotfiles.key.age .secrets.tar.gz.age > .secrets.tar.gz
-        tar xvf .secrets.tar.gz
-        rm .secrets.tar.gz
-        tree -a .secrets/
-        cd $PRE_PWD
       '';
     };
   };
