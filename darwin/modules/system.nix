@@ -3,8 +3,6 @@
   programs.zsh.enable = true; # default shell on catalina
   programs.fish.enable = true;
 
-  imports = [ ./fish-fix.nix ];
-
   environment = {
     shells = [ pkgs.fish ];
     variables = {
