@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  linkSecret = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.nix-config/secrets/fish/${path}";
+  linkSecret = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/secrets/fish/${path}";
 in
 {
   home.file.".config/fish/functions/hikari.fish".source = linkSecret "hikari.fish";

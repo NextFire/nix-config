@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 let
-  link = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.nix-config/home/apps/mpv/${path}";
-  linkSecret = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.nix-config/secrets/mpv/${path}";
+  link = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/home/apps/mpv/${path}";
+  linkSecret = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/secrets/mpv/${path}";
 in
 {
   home.file.".config/mpv/scripts/autoload.lua".source = link "autoload.lua";

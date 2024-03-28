@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  link = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.nix-config/home/apps/git/${path}";
+  link = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/home/apps/git/${path}";
 in
 {
   home.file.".config/git/allowed_signers".source = link "allowed_signers";

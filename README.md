@@ -1,7 +1,7 @@
 # nix-config
 
 ```sh
-git clone git@github.com:NextFire/nix-config.git ~/.nix-config
+git clone git@github.com:NextFire/nix-config.git ~/nix-config
 ```
 
 ## macOS Configuration
@@ -27,6 +27,6 @@ darwin-rebuild switch --flake .
 ## Dev Shell
 
 ```sh
-nix registry add local ~/.nix-config
+nix registry add local ~/nix-config
 nix develop local#<name>
 ```

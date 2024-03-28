@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  link = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.nix-config/home/apps/aegisub/${path}";
+  link = path: config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-config/home/apps/aegisub/${path}";
 in
 {
   home.file = {
