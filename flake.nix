@@ -25,6 +25,7 @@
         # 1. Add foo to inputs
         # 2. Add foo as a parameter to the outputs function
         # 3. Add here: foo.flakeModule
+        ./darwin
         ./packages
         ./shells
       ];
@@ -40,7 +41,6 @@
         # The usual flake attributes can be defined here, including system-
         # agnostic ones like nixosModule and system-enumerating ones, although
         # those are more easily expressed in perSystem.
-        inherit (import ./darwin { inherit inputs; }) darwinConfigurations;
       };
     };
 }

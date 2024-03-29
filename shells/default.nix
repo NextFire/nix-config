@@ -4,7 +4,5 @@
       common = with pkgs; [ ];
       mkShell = deps: pkgs.mkShell { packages = common ++ deps; };
     in
-    {
-      devShells = import ./stacks.nix { inherit pkgs mkShell; };
-    };
+    { devShells = import ./stacks.nix { inherit pkgs mkShell; }; };
 }

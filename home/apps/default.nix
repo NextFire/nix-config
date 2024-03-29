@@ -30,41 +30,47 @@ in
   };
 
   # Packages that should be installed to the user profile.
-  home.packages = with pkgs // self.packages.${pkgs.system}; [
-    age
-    amaranth
-    cargo
-    cookhand-std-r
-    deno
-    docker-client
-    edgedb
-    ffmpeg
-    go
-    helmfile
-    httpie
-    imagemagick
-    just
-    krew
-    kubectl
-    kubernetes-helm
-    kustomize
-    mediainfo
-    meson
-    nil
-    nixpkgs-fmt
-    nodejs_20
-    pandoc
-    pipx
-    pkg-config
-    python312
-    rustc
-    sops
-    stern
-    tectonic
-    tree
-    typst
-    uv
-    wget
-    yq
-  ];
+  home.packages =
+    let
+      nixPkgs = with pkgs; [
+        age
+        cargo
+        deno
+        docker-client
+        edgedb
+        ffmpeg
+        go
+        helmfile
+        httpie
+        imagemagick
+        just
+        krew
+        kubectl
+        kubernetes-helm
+        kustomize
+        mediainfo
+        meson
+        nil
+        nixpkgs-fmt
+        nodejs_20
+        pandoc
+        pipx
+        pkg-config
+        python312
+        rustc
+        sops
+        stern
+        tectonic
+        tree
+        typst
+        uv
+        wget
+        yq
+      ];
+      customPkgs = with self.packages.${pkgs.system}; [
+        amaranth
+        cookhand-std-r
+      ];
+    in
+    nixPkgs ++ customPkgs;
 }
