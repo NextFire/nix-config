@@ -14,7 +14,7 @@
 
   imports = [
     inputs.sops-nix.homeManagerModules.sops
-    ./programs.nix
+    ./apps.nix
   ];
 
   sops = {
