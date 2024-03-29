@@ -1,8 +1,8 @@
-{
-  home.file.".config/git/allowed_signers".text = ''
-    git@yuru.moe ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAf0XdYYcV+eqm/IKre3xJlcZNtHTdiD8aDfb6U4+eNd namvu@MacBook-Pro-de-Nam.local
-    git@yuru.moe ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPByPvY+EQBd98iuNBXk1MT1w2TzKbF/kvNbIQRB1sh2 root@camp
-  '';
+{ lib, ... }: {
+  home.file.".config/git/allowed_signers".text = lib.concatMapStrings (x: x + "\n") [
+    "git@yuru.moe ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAf0XdYYcV+eqm/IKre3xJlcZNtHTdiD8aDfb6U4+eNd namvu@MacBook-Pro-de-Nam.local"
+    "git@yuru.moe ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPByPvY+EQBd98iuNBXk1MT1w2TzKbF/kvNbIQRB1sh2 root@camp"
+  ];
 
   programs.git = {
     enable = true;
