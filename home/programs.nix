@@ -4,20 +4,20 @@ let
 in
 {
   imports = [
-    ./aegisub
-    ./ansible
-    ./fish
-    ./git
-    ./htop
-    ./mpv
-    ./ncdu
-    ./poetry
-    ./rclone
-    ./sops
-    ./ssh
-    # ./starship
-    ./syncplay
-    ./yt-dlp
+    ./programs/aegisub
+    ./programs/ansible.nix
+    ./programs/fish.nix
+    ./programs/git.nix
+    ./programs/htop.nix
+    ./programs/mpv.nix
+    ./programs/ncdu.nix
+    ./programs/poetry.nix
+    ./programs/rclone.nix
+    ./programs/sops.nix
+    ./programs/ssh.nix
+    # ./programs/starship.nix
+    ./programs/syncplay.nix
+    ./programs/yt-dlp.nix
   ];
 
   programs = {

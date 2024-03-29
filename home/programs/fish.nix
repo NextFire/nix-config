@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  utils = import ../../utils.nix { appDir = ./.; inherit config; };
+  utils = import ../utils.nix { program = "fish"; inherit config; };
 in
 {
   home.file.".config/fish/functions/hikari.fish".source = utils.linkSecret ./hikari.fish;

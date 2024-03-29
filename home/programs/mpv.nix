@@ -1,13 +1,13 @@
 { pkgs, config, ... }:
 let
-  utils = import ../../utils.nix { appDir = ./.; inherit config; };
+  utils = import ../utils.nix { program = "mpv"; inherit config; };
   scriptPath = script: "${script}/share/mpv/scripts/${script.scriptName}";
 in
 {
   home.file.".config/mpv/scripts/japan7.lua".source = utils.linkSecret ./japan7.lua;
 
   programs.mpv = {
-    enable = true;
+    enable = true; # FIXME: mpv is installed twice on macOS
     scripts = with pkgs.mpvScripts; [ autoload ];
     bindings = {
       "AXIS_DOWN" = "add volume 1";
