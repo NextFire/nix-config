@@ -1,4 +1,4 @@
-{
+{ config, inputs, ... }: {
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
@@ -12,5 +12,13 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  imports = [ ./programs.nix ];
+  imports = [
+    inputs.sops-nix.homeManagerModules.sops
+    ./programs.nix
+  ];
+
+  sops = {
+    defaultSopsFile = ./secrets.sops.yaml;
+    age.keyFile = "${config.home.homeDirectory}/.nix-config.key.txt";
+  };
 }

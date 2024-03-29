@@ -1,9 +1,5 @@
-{ pkgs, config, ... }:
-let
-  utils = import ../utils.nix { program = "sops"; inherit config; };
-in
-{
-  home.file."Library/Application Support/sops/age/keys.txt".source = utils.linkSecret ./keys.txt;
+{ pkgs, config, ... }: {
+  sops.secrets."sops_/keys.txt".path = "${config.home.homeDirectory}/Library/Application Support/sops/age/keys.txt";
 
   home.packages = [ pkgs.sops ];
 }

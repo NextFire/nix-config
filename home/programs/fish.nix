@@ -1,9 +1,5 @@
-{ config, ... }:
-let
-  utils = import ../utils.nix { program = "fish"; inherit config; };
-in
-{
-  home.file.".config/fish/functions/hikari.fish".source = utils.linkSecret ./hikari.fish;
+{ config, ... }: {
+  sops.secrets."fish/hikari.fish".path = "${config.home.homeDirectory}/.config/fish/functions/hikari.fish";
 
   programs.fish = {
     enable = true;
