@@ -1,9 +1,12 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }:
+let
+  inherit (inputs) self;
+in
+{
   imports = [
     ./aegisub
     ./ansible
     ./fish
-    ./fonts
     ./git
     ./htop
     ./mpv
@@ -27,9 +30,11 @@
   };
 
   # Packages that should be installed to the user profile.
-  home.packages = with pkgs; [
+  home.packages = with pkgs // self.packages.${pkgs.system}; [
     age
+    amaranth
     cargo
+    cookhand-std-r
     deno
     docker-client
     edgedb

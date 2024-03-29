@@ -11,14 +11,12 @@
       cleanup = "zap";
     };
     taps = [
-      "homebrew/cask-fonts"
       "japan7/tap"
     ];
     casks = [
       "aegisub-japan7"
       "chromium"
       "discord"
-      "font-amaranth"
       "keka"
       "macfuse"
       "musicbrainz-picard"
