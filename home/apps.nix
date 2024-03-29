@@ -9,6 +9,7 @@ in
     ./apps/fish.nix
     ./apps/git.nix
     ./apps/htop.nix
+    ./apps/krew.nix
     ./apps/mpv.nix
     ./apps/ncdu.nix
     ./apps/poetry.nix
@@ -44,7 +45,6 @@ in
         httpie
         imagemagick
         just
-        krew
         kubectl
         kubernetes-helm
         kustomize
