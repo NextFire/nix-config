@@ -13,7 +13,7 @@ in
     ./apps/fish.nix
     ./apps/git.nix
     ./apps/htop.nix
-    ./apps/krew.nix
+    ./apps/kubectl.nix
     ./apps/mpv.nix
     ./apps/ncdu.nix
     ./apps/poetry.nix
@@ -44,13 +44,8 @@ in
         edgedb
         ffmpeg
         go
-        helmfile
         httpie
         imagemagick
-        just
-        kubectl
-        kubernetes-helm
-        kustomize
         mediainfo
         meson
         nil
@@ -60,15 +55,14 @@ in
         pipx
         pkg-config
         python312
+        rust-bin.stable.latest.minimal
         sops
-        stern
         tectonic
         tree
         typst
         uv
         wget
         yq
-        rust-bin.stable.latest.minimal
       ];
       selfPkgs = with self'.packages; [
         amaranth

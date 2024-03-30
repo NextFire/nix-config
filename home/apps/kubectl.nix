@@ -1,8 +1,10 @@
-{ pkgs, inputs', lib, ... }:
+{ pkgs, inputs', config, lib, ... }:
 let
   inherit (inputs') krewfile;
 in
 {
+  sops.secrets."kubectl/config".path = "${config.home.homeDirectory}/.kube/config";
+
   home.file.".krewfile" = {
     text = lib.concatMapStrings (x: x + "\n") [
       "cnpg"
@@ -22,8 +24,14 @@ in
       "PATH=${path}:$PATH sh -c 'krew update && krewfile -upgrade'";
   };
 
-  home.packages = [
-    pkgs.krew
+  home.packages = (with pkgs; [
+    helmfile
+    krew
+    kubectl
+    kubernetes-helm
+    kustomize
+    stern
+  ]) ++ [
     krewfile.packages.default
   ];
 }
