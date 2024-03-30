@@ -1,27 +1,30 @@
-{ inputs, ... }:
+{ inputs, self, ... }:
 let
   inherit (inputs) darwin;
-  username = "namvu";
-  mkDarwin = hostPlatform: darwin.lib.darwinSystem {
-    modules = [
-      ./modules/apps.nix
-      ./modules/fish-fix.nix
-      ./modules/home-manager.nix
-      ./modules/nix-core.nix
-      ./modules/system.nix
-    ];
-    specialArgs = { inherit inputs hostPlatform username; };
-  };
+  revision = self.rev or self.dirtyRev or null;
 in
 {
-  flake = {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#${hostname}
-    darwinConfigurations = {
-      "MacBook-Pro-de-Nam" = mkDarwin "x86_64-darwin";
-    };
+  perSystem = { inputs', self', system, ... }:
+    let
+      mkDarwin = { username }: darwin.lib.darwinSystem {
+        modules = [
+          ./modules/apps.nix
+          ./modules/fish-fix.nix
+          ./modules/home-manager.nix
+          ./modules/nix-core.nix
+          ./modules/system.nix
+        ];
+        specialArgs = { inherit inputs inputs' self' system username revision; };
+      };
+    in
+    {
+      # Build darwin flake using:
+      # $ darwin-rebuild build --flake .#${hostname}
+      legacyPackages.darwinConfigurations = {
+        "MacBook-Pro-de-Nam" = mkDarwin { username = "namvu"; };
+      };
 
-    # Expose the package set, including overlays, for convenience.
-    # darwinPackages = self.darwinConfigurations.${hostname}.pkgs;
-  };
+      # Expose the package set, including overlays, for convenience.
+      # darwinPackages = self.darwinConfigurations.${hostname}.pkgs;
+    };
 }

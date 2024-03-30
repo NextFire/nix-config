@@ -38,9 +38,6 @@
         "code" = { cmd = "code --wait --merge $REMOTE $LOCAL $BASE $MERGED"; };
       };
       rerere = { enabled = true; };
-      url = {
-        "git@github.com:" = { insteadOf = "https://github.com/"; };
-      };
     };
     ignores = [
       # https://github.com/github/gitignore/blob/4488915eec0b3a45b5c63ead28f286819c0917de/Global/macOS.gitignore

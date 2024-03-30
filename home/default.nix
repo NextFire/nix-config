@@ -1,32 +1,30 @@
-{ config, inputs, ... }:
+{ inputs, ... }:
 let
-  inherit (inputs) sops-nix rust-overlay;
+  inherit (inputs) home-manager;
 in
 {
-  # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
-  home.stateVersion = "23.11";
+  perSystem = { pkgs, inputs', self', ... }:
+    let
+      mkHome = { username, homeDirectory }: home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+        # Specify your home configuration modules here, for example,
+        # the path to your home.nix.
+        modules = [
+          # Home Manager needs a bit of information about you and the paths it should
+          # manage.
+          { home.username = username; home.homeDirectory = homeDirectory; }
+          ./home.nix
+        ];
 
-  nixpkgs.overlays = [
-    rust-overlay.overlays.default
-  ];
-
-  imports = [
-    sops-nix.homeManagerModules.sops
-    ./apps.nix
-  ];
-
-  sops = {
-    defaultSopsFile = ./secrets.sops.yaml;
-    age.keyFile = "${config.home.homeDirectory}/.nix-config.key.txt";
-  };
+        # Optionally use extraSpecialArgs
+        # to pass through arguments to home.nix
+        extraSpecialArgs = { inherit inputs inputs' self'; };
+      };
+    in
+    {
+      legacyPackages.homeConfigurations = {
+        "vagrant" = mkHome { username = "vagrant"; homeDirectory = "/home/vagrant"; };
+      };
+    };
 }

@@ -1,15 +1,14 @@
 # nix-config
 
-## macOS Configuration
+**Requirement:** `~/.nix-config.key.txt`
+
+## nix-darwin
 
 ### Install
 
 ```sh
-# Install Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-# Install Nix
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
-# Apply configuration
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 nix run nix-darwin -- switch --flake .
 ```
 
@@ -18,6 +17,22 @@ nix run nix-darwin -- switch --flake .
 ```sh
 nix-channel --update
 darwin-rebuild switch --flake .
+```
+
+## Standalone home-manager
+
+### Install
+
+```sh
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+nix run home-manager/master -- switch --flake .
+```
+
+### Update
+
+```sh
+nix-channel --update
+home-manager switch --flake .
 ```
 
 ## Dev Shell

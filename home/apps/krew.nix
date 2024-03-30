@@ -1,6 +1,6 @@
-{ pkgs, config, lib, inputs, ... }:
+{ pkgs, inputs', lib, ... }:
 let
-  inherit (inputs) krewfile;
+  inherit (inputs') krewfile;
 in
 {
   home.file.".krewfile" = {
@@ -13,7 +13,8 @@ in
     onChange =
       let
         path = lib.concatMapStrings (x: x + ":") [
-          "/etc/profiles/per-user/${config.home.username}/bin"
+          "$HOME/.nix-profile/bin"
+          "/etc/profiles/per-user/$HOME/bin"
           "/run/current-system/sw/bin"
           "/usr/bin"
         ];
@@ -23,6 +24,6 @@ in
 
   home.packages = [
     pkgs.krew
-    krewfile.packages.${pkgs.system}.default
+    krewfile.packages.default
   ];
 }

@@ -25,6 +25,7 @@
         # 2. Add foo as a parameter to the outputs function
         # 3. Add here: foo.flakeModule
         ./darwin
+        ./home
         ./packages
         ./shells
       ];

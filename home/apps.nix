@@ -1,8 +1,12 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, self', ... }:
 let
-  inherit (inputs) self;
+  inherit (inputs) rust-overlay;
 in
 {
+  nixpkgs.overlays = [
+    rust-overlay.overlays.default
+  ];
+
   imports = [
     ./apps/aegisub
     ./apps/ansible.nix
@@ -66,7 +70,7 @@ in
         yq
         rust-bin.stable.latest.minimal
       ];
-      selfPkgs = with self.packages.${pkgs.system}; [
+      selfPkgs = with self'.packages; [
         amaranth
         cookhand-std-r
       ];
