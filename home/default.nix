@@ -1,11 +1,7 @@
-{ inputs, ... }:
-let
-  inherit (inputs) home-manager;
-in
-{
+{ inputs, ... }: {
   perSystem = { pkgs, inputs', self', ... }:
     let
-      mkHome = { username, homeDirectory }: home-manager.lib.homeManagerConfiguration {
+      mkHome = { username, homeDirectory }: inputs.home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
         # Specify your home configuration modules here, for example,

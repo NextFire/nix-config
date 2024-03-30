@@ -1,9 +1,5 @@
-{ pkgs, inputs, config, lib, ... }:
-let
-  inherit (inputs) sops-nix;
-in
-{
-  imports = [ sops-nix.homeManagerModules.sops ];
+{ pkgs, inputs, config, lib, ... }: {
+  imports = [ inputs.sops-nix.homeManagerModules.sops ];
 
   sops = {
     defaultSopsFile = ./secrets.sops.yaml;

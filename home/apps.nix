@@ -1,10 +1,6 @@
-{ pkgs, inputs, self', ... }:
-let
-  inherit (inputs) rust-overlay;
-in
-{
+{ pkgs, inputs, self', ... }: {
   nixpkgs.overlays = [
-    rust-overlay.overlays.default
+    inputs.fenix.overlays.default
   ];
 
   imports = [
@@ -42,6 +38,7 @@ in
         deno
         docker-client
         edgedb
+        fenix.stable.minimalToolchain
         ffmpeg
         go
         httpie
@@ -55,7 +52,6 @@ in
         pipx
         pkg-config
         python312
-        rust-bin.stable.latest.minimal
         sops
         tectonic
         tree

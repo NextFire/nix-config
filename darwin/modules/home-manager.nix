@@ -1,9 +1,5 @@
-{ inputs, inputs', self', username, ... }:
-let
-  inherit (inputs) home-manager;
-in
-{
-  imports = [ home-manager.darwinModules.home-manager ];
+{ inputs, inputs', self', username, ... }: {
+  imports = [ inputs.home-manager.darwinModules.home-manager ];
 
   home-manager.useGlobalPkgs = false;
   home-manager.useUserPackages = true;
