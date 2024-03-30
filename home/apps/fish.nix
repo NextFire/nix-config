@@ -1,5 +1,5 @@
 { config, ... }: {
-  sops.secrets."fish/hikari.fish".path = "${config.home.homeDirectory}/.config/fish/functions/hikari.fish";
+  sops.secrets."fish/hikari.fish".path = "${config.xdg.configHome}/fish/functions/hikari.fish";
 
   programs.fish = {
     enable = true;

@@ -1,5 +1,5 @@
-{ lib, ... }: {
-  home.file.".config/git/allowed_signers".text = lib.concatMapStrings (x: x + "\n") [
+{ lib, config, ... }: {
+  xdg.configFile."git/allowed_signers".text = lib.concatMapStrings (x: x + "\n") [
     "git@yuru.moe ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAf0XdYYcV+eqm/IKre3xJlcZNtHTdiD8aDfb6U4+eNd namvu@MacBook-Pro-de-Nam.local"
     "git@yuru.moe ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPByPvY+EQBd98iuNBXk1MT1w2TzKbF/kvNbIQRB1sh2 root@camp"
   ];
@@ -14,7 +14,7 @@
       core = { autocrlf = "input"; };
       gpg = {
         format = "ssh";
-        ssh = { allowedSignersFile = "~/.config/git/allowed_signers"; };
+        ssh = { allowedSignersFile = "${config.xdg.configHome}/git/allowed_signers"; };
       };
       init = { defaultBranch = "main"; };
       fetch = { prune = true; };

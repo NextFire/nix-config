@@ -1,7 +1,15 @@
+{ pkgs, ... }:
+let
+  configDir =
+    if pkgs.stdenv.isDarwin then
+      "Library/Application Support/Aegisub"
+    else
+      ".aegisub";
+in
 {
   home.file = {
-    "Library/Application Support/Aegisub/hotkey.json".source = ./hotkey.json;
-    "Library/Application Support/Aegisub/catalog".source = ./catalog;
-    "Library/Application Support/Aegisub/automation/autoload/fade.lua".source = ./autoload/fade.lua;
+    "${configDir}/hotkey.json".source = ./hotkey.json;
+    "${configDir}/catalog".source = ./catalog;
+    "${configDir}/automation/autoload/fade.lua".source = ./autoload/fade.lua;
   };
 }

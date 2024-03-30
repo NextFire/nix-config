@@ -1,5 +1,13 @@
-{ pkgs, ... }: {
-  home.file."Library/Application Support/pypoetry/config.toml".text = ''
+{ pkgs, config, ... }:
+let
+  configDir =
+    if pkgs.stdenv.isDarwin then
+      "Library/Application Support/pypoetry"
+    else
+      "${config.xdg.configHome}/pypoetry";
+in
+{
+  home.file."${configDir}/config.toml".text = ''
     [virtualenvs]
     in-project = true
   '';

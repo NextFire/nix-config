@@ -1,5 +1,5 @@
 { pkgs, lib, ... }: {
-  home.file.".config/ncdu/config".text = lib.concatMapStrings (x: x + "\n") [
+  xdg.configFile."ncdu/config".text = lib.concatMapStrings (x: x + "\n") [
     "--color off"
   ];
 
