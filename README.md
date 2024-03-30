@@ -1,6 +1,8 @@
 # nix-config
 
-**Requirement:** `~/.nix-config.key.txt`
+Personal Nix flake configuration for macOS and Linux. It uses flake-parts, nix-darwin, home-manager and sops-nix.
+
+**Requirement:** `~/.nix-config.key.txt` (sops age private key)
 
 ## nix-darwin
 
@@ -35,9 +37,9 @@ nix-channel --update
 home-manager switch --flake .
 ```
 
-## Dev Shell
+## Development Shells
 
 ```sh
-nix registry add local <repo>
-nix develop local#<name>
+nix registry add nextfire github:NextFire/nix-config
+nix develop nextfire#<name>
 ```
