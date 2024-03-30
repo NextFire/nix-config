@@ -1,4 +1,8 @@
-{ config, inputs, ... }: {
+{ config, inputs, ... }:
+let
+  inherit (inputs) sops-nix rust-overlay;
+in
+{
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
@@ -12,8 +16,12 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  nixpkgs.overlays = [
+    rust-overlay.overlays.default
+  ];
+
   imports = [
-    inputs.sops-nix.homeManagerModules.sops
+    sops-nix.homeManagerModules.sops
     ./apps.nix
   ];
 

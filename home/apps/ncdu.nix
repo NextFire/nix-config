@@ -3,5 +3,5 @@
     "--color off"
   ];
 
-  home.packages = [ pkgs.ncdu ];
+  home.packages = [ pkgs.ncdu_1 ];
 }

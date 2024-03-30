@@ -1,6 +1,6 @@
 { pkgs, config, lib, inputs, ... }:
 let
-  krewfile = inputs.krewfile.packages.${pkgs.system}.krewfile;
+  inherit (inputs) krewfile;
 in
 {
   home.file.".krewfile" = {
@@ -21,5 +21,8 @@ in
       "PATH=${path}:$PATH sh -c 'krew update && krewfile -upgrade'";
   };
 
-  home.packages = [ pkgs.krew krewfile ];
+  home.packages = [
+    pkgs.krew
+    krewfile.packages.${pkgs.system}.default
+  ];
 }

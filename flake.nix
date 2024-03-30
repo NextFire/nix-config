@@ -2,9 +2,7 @@
   description = "NextFire's Nix config";
 
   inputs = {
-    nixpkgs = {
-      url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,15 +11,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-    };
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-    };
-    krewfile = {
-      url = "github:brumhard/krewfile";
-    };
+    sops-nix.url = "github:Mic92/sops-nix";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    rust-overlay.url = "github:oxalica/rust-overlay";
+    krewfile.url = "github:brumhard/krewfile";
   };
 
   outputs = inputs@{ flake-parts, ... }:

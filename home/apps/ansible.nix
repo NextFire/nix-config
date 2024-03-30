@@ -8,5 +8,6 @@
     always = True
   '';
 
-  home.packages = [ pkgs.ansible ];
+  # FIXME: too big, I prefer `pipx install ansible-core`
+  # home.packages = [ pkgs.ansible ];
 }

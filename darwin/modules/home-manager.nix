@@ -5,7 +5,7 @@ in
 {
   imports = [ home-manager.darwinModules.home-manager ];
 
-  home-manager.useGlobalPkgs = true;
+  home-manager.useGlobalPkgs = false;
   home-manager.useUserPackages = true;
 
   home-manager.users.${username} = import ../../home;

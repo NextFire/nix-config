@@ -35,7 +35,6 @@ in
     let
       nixPkgs = with pkgs; [
         age
-        cargo
         deno
         docker-client
         edgedb
@@ -57,7 +56,6 @@ in
         pipx
         pkg-config
         python312
-        rustc
         sops
         stern
         tectonic
@@ -66,11 +64,14 @@ in
         uv
         wget
         yq
+        rust-bin.stable.latest.minimal
       ];
-      customPkgs = with self.packages.${pkgs.system}; [
+      selfPkgs = with self.packages.${pkgs.system}; [
         amaranth
         cookhand-std-r
       ];
+      otherPkgs = [
+      ];
     in
-    nixPkgs ++ customPkgs;
+    nixPkgs ++ selfPkgs ++ otherPkgs;
 }
