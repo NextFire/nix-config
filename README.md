@@ -35,10 +35,3 @@ nix run home-manager/master -- switch --flake .
 nix-channel --update
 home-manager switch --flake .
 ```
-
-## Development Shells
-
-```sh
-nix registry add nextfire github:NextFire/nix-config
-nix develop nextfire#<name>
-```
