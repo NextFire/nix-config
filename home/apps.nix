@@ -1,6 +1,7 @@
 { pkgs, inputs, self, self', ... }: {
   nixpkgs.overlays = [
     inputs.fenix.overlays.default
+    self.overlays.japan7
     self.overlays.pipx
   ];
 

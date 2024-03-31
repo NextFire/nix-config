@@ -27,19 +27,16 @@
       upgrade = true;
       cleanup = "zap";
     };
-    taps = [
-      "japan7/tap"
-    ];
     casks = [
-      "aegisub-japan7"
       "chromium"
       "discord"
+      "japan7/tap/aegisub-japan7"
+      "japan7/tap/syncplay-japan7"
       "keka"
       "macfuse"
       "musicbrainz-picard"
       "rancher"
       "spotify"
-      "syncplay-japan7"
       "transmission"
       "vagrant"
       "virtualbox"
