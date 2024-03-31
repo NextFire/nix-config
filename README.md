@@ -26,12 +26,12 @@ darwin-rebuild switch --flake .
 
 ```sh
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
-nix run home-manager/master -- switch --flake .
+nix run home-manager/master -- switch --flake . -b backup
 ```
 
 ### Update
 
 ```sh
 nix-channel --update
-home-manager switch --flake .
+home-manager switch --flake . -b backup
 ```

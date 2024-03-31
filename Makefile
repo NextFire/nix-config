@@ -11,11 +11,11 @@ darwin-switch:
 	darwin-rebuild switch --flake .
 
 hm-init:
-	nix run home-manager/master -- switch --flake .
+	nix run home-manager/master -- switch --flake . -b backup
 
 hm-switch:
 	nix-channel --update
-	home-manager switch --flake .
+	home-manager switch --flake . -b backup
 
 secrets:
 	sops -i home/secrets.sops.yaml

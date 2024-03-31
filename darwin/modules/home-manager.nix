@@ -12,5 +12,5 @@
   home-manager.users.${username} = import ../../home/home.nix;
   home-manager.extraSpecialArgs = { inherit inputs inputs' self'; };
 
-  home-manager.backupFileExtension = "old";
+  home-manager.backupFileExtension = "backup";
 }
