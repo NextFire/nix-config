@@ -43,6 +43,7 @@
         # 3. Add here: foo.flakeModule
         ./darwin
         ./home
+        ./overlays
         ./packages
       ];
       systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];

@@ -1,6 +1,7 @@
-{ pkgs, inputs, self', ... }: {
+{ pkgs, inputs, self, self', ... }: {
   nixpkgs.overlays = [
     inputs.fenix.overlays.default
+    self.overlays.pipx
   ];
 
   imports = [
@@ -51,10 +52,7 @@
         nixpkgs-fmt
         nodejs_20
         pandoc
-        (pipx.overrideAttrs (oldAttrs: {
-          # FIXME: https://github.com/NixOS/nixpkgs/pull/298528
-          disabledTests = oldAttrs.disabledTests ++ [ "test_skip_maintenance" ];
-        }))
+        pipx
         pkg-config
         python312
         tectonic
