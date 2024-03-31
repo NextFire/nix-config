@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   configDir =
     if pkgs.stdenv.isDarwin then
@@ -7,6 +7,8 @@ let
       ".aegisub";
 in
 {
+  home.packages = lib.mkIf pkgs.stdenv.isLinux (with pkgs; [ aegisub ]);
+
   home.file = {
     "${configDir}/hotkey.json".source = ./hotkey.json;
     "${configDir}/catalog".source = ./catalog;

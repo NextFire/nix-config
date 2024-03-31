@@ -1,4 +1,14 @@
 { pkgs, inputs', config, lib, ... }: {
+  home.packages = with pkgs; [
+    helmfile
+    inputs'.krewfile.packages.default
+    krew
+    kubectl
+    kubernetes-helm
+    kustomize
+    stern
+  ];
+
   sops.secrets."kubectl/config".path = "${config.home.homeDirectory}/.kube/config";
 
   home.file.".krewfile" = {
@@ -19,14 +29,4 @@
       in
       "PATH=${path}:$PATH sh -c 'krew update && krewfile -upgrade'";
   };
-
-  home.packages = with pkgs; [
-    helmfile
-    inputs'.krewfile.packages.default
-    krew
-    kubectl
-    kubernetes-helm
-    kustomize
-    stern
-  ];
 }

@@ -7,10 +7,10 @@ let
       "${config.xdg.configHome}/pypoetry";
 in
 {
+  home.packages = with pkgs; [ poetry ];
+
   home.file."${configDir}/config.toml".text = ''
     [virtualenvs]
     in-project = true
   '';
-
-  home.packages = [ pkgs.poetry ];
 }

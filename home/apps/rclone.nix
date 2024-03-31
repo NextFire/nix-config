@@ -1,5 +1,5 @@
 { pkgs, config, ... }: {
-  sops.secrets."rclone/rclone.conf".path = "${config.xdg.configHome}/rclone/rclone.conf";
+  home.packages = with pkgs; [ rclone ];
 
-  home.packages = [ pkgs.rclone ];
+  sops.secrets."rclone/rclone.conf".path = "${config.xdg.configHome}/rclone/rclone.conf";
 }

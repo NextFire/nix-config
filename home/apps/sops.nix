@@ -7,7 +7,7 @@ let
       "${config.xdg.configHome}/sops";
 in
 {
-  sops.secrets."sops_/keys.txt".path = "${configDir}/age/keys.txt";
+  home.packages = with pkgs; [ sops ];
 
-  home.packages = [ pkgs.sops ];
+  sops.secrets."sops_/keys.txt".path = "${configDir}/age/keys.txt";
 }

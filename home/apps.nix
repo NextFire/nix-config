@@ -57,7 +57,6 @@
         }))
         pkg-config
         python312
-        sops
         tectonic
         tree
         typst
