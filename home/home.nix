@@ -13,11 +13,8 @@
   programs.home-manager.enable = true;
 
   imports = [
-    ./apps.nix
+    ./apps
+    ./nix-core.nix
     ./sops.nix
   ];
-
-  # Garbage collection (user)
-  nix.gc.automatic = true;
-  nix.gc.options = "-d";
 }

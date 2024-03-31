@@ -4,21 +4,21 @@
   ];
 
   imports = [
-    ./apps/aegisub
-    ./apps/ansible.nix
-    ./apps/fish.nix
-    ./apps/git.nix
-    ./apps/htop.nix
-    ./apps/kubectl.nix
-    ./apps/mpv.nix
-    ./apps/ncdu.nix
-    ./apps/poetry.nix
-    ./apps/rclone.nix
-    ./apps/sops.nix
-    ./apps/ssh.nix
-    # ./apps/starship.nix
-    ./apps/syncplay.nix
-    ./apps/yt-dlp.nix
+    ./aegisub
+    ./ansible.nix
+    ./fish.nix
+    ./git.nix
+    ./htop.nix
+    ./kubectl.nix
+    ./mpv.nix
+    ./ncdu.nix
+    ./poetry.nix
+    ./rclone.nix
+    ./sops.nix
+    ./ssh.nix
+    # ./starship.nix
+    ./syncplay.nix
+    ./yt-dlp.nix
   ];
 
   programs = {
