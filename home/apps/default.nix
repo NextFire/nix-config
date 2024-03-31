@@ -49,7 +49,10 @@
         nixpkgs-fmt
         nodejs_20
         pandoc
-        pipx
+        (pipx.overrideAttrs (oldAttrs: {
+          # FIXME: https://github.com/NixOS/nixpkgs/pull/298528
+          disabledTests = oldAttrs.disabledTests ++ [ "test_skip_maintenance" ];
+        }))
         pkg-config
         python312
         sops
