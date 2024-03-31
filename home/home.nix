@@ -15,6 +15,6 @@
   imports = [
     ./apps
     ./nix-core.nix
-    ./sops.nix
+    ./secrets.nix
   ];
 }
