@@ -4,11 +4,11 @@
     let
       mkDarwin = { username }: inputs.darwin.lib.darwinSystem {
         modules = [
-          ./fish-fix.nix
-          ./home-manager.nix
-          ./homebrew.nix
-          ./nix-core.nix
-          ./system.nix
+          ./modules/fish-fix.nix
+          ./modules/home-manager.nix
+          ./modules/homebrew.nix
+          ./modules/nix-core.nix
+          ./modules/system.nix
         ];
         specialArgs = {
           inherit inputs inputs' self' system username;
