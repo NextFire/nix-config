@@ -32,10 +32,6 @@
         set hostname (python3 -c "import socket; print(socket.gethostname())")
         rclone copyto $HOME/.local/share/fish/fish_history jotta-crypt:local_secrets/$hostname/fish_history -P
       '';
-      nixgc = ''
-        nix-collect-garbage -d
-        sudo nix-collect-garbage -d
-      '';
       dinit = ''
         nix flake new -t github:nix-community/nix-direnv .
       '';

@@ -6,6 +6,10 @@
   # Necessary for using flakes on this system.
   nix.settings.experimental-features = "nix-command flakes";
 
+  # Garbage collection (system)
+  nix.gc.automatic = true;
+  nix.gc.options = "-d";
+
   # Set Git commit hash for darwin-version.
   system.configurationRevision = revision;
 
