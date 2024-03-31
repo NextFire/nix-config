@@ -1,4 +1,7 @@
-.PHONY: darwin-init darwin-switch hm-init hm-switch secrets
+.PHONY: nix-install darwin-init darwin-switch hm-init hm-switch secrets
+
+nix-install:
+	curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 
 darwin-init:
 	nix run nix-darwin -- switch --flake .
