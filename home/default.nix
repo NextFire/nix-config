@@ -7,9 +7,11 @@
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [
-          # Home Manager needs a bit of information about you and the paths it should
-          # manage.
-          { home.username = username; home.homeDirectory = homeDirectory; }
+          {
+            # Home Manager needs a bit of information about you and the paths it should
+            # manage.
+            home = { inherit username homeDirectory; };
+          }
           ./home.nix
         ];
 
@@ -20,7 +22,7 @@
     in
     {
       legacyPackages.homeConfigurations = {
-        "vagrant" = mkHome { username = "vagrant"; homeDirectory = "/home/vagrant"; };
+        "vagrant" = mkHome rec { username = "vagrant"; homeDirectory = "/home/${username}"; };
       };
     };
 }

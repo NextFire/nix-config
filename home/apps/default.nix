@@ -6,6 +6,7 @@
   imports = [
     ./aegisub
     ./ansible.nix
+    ./bash.nix
     ./fish.nix
     ./git.nix
     ./htop.nix
@@ -40,6 +41,7 @@
         edgedb
         fenix.stable.minimalToolchain
         ffmpeg
+        gnumake
         go
         httpie
         imagemagick
