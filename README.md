@@ -10,7 +10,6 @@ Personal Nix flake configuration for macOS and Linux. It uses flake-parts, nix-d
 
 ```sh
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 nix run nix-darwin -- switch --flake .
 ```
 

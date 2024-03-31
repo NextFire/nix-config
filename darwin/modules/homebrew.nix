@@ -1,7 +1,24 @@
-{ pkgs, ... }: {
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [ ];
+{ inputs, system, username, ... }: {
+  imports = [ inputs.nix-homebrew.darwinModules.nix-homebrew ];
+
+  nix-homebrew = {
+    # Install Homebrew under the default prefix
+    enable = true;
+
+    # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
+    enableRosetta = (system == "aarch64-darwin");
+
+    # User owning the Homebrew prefix
+    user = username;
+
+    # Automatically migrate existing Homebrew installations
+    autoMigrate = true;
+
+    # Optional: Enable fully-declarative tap management
+    #
+    # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
+    # mutableTaps = false;
+  };
 
   homebrew = {
     enable = true;
@@ -28,6 +45,7 @@
       "virtualbox"
       "visual-studio-code"
     ];
+    caskArgs.no_quarantine = true;
     masApps = {
       "AdGuard for Safari" = 1440147259;
       "Bitwarden" = 1352778147;

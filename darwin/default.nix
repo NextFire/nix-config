@@ -3,9 +3,9 @@
     let
       mkDarwin = { username }: inputs.darwin.lib.darwinSystem {
         modules = [
-          ./modules/apps.nix
           ./modules/fish-fix.nix
           ./modules/home-manager.nix
+          ./modules/homebrew.nix
           ./modules/nix-core.nix
           ./modules/system.nix
         ];
