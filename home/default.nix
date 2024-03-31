@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ inputs, self, ... }: {
   perSystem = { pkgs, inputs', self', ... }:
     let
       mkHome = { username, homeDirectory }: inputs.home-manager.lib.homeManagerConfiguration {
@@ -17,7 +17,7 @@
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
-        extraSpecialArgs = { inherit inputs inputs' self'; };
+        extraSpecialArgs = { inherit inputs self inputs' self'; };
       };
     in
     {

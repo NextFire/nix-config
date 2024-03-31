@@ -1,4 +1,4 @@
-{ pkgs, inputs, inputs', self', username, ... }: {
+{ pkgs, inputs, self, inputs', self', username, ... }: {
   users.users.${username} = {
     home = "/Users/${username}";
     shell = pkgs.fish;
@@ -10,7 +10,7 @@
   home-manager.useUserPackages = true;
 
   home-manager.users.${username} = import ../../home/home.nix;
-  home-manager.extraSpecialArgs = { inherit inputs inputs' self'; };
+  home-manager.extraSpecialArgs = { inherit inputs self inputs' self'; };
 
   home-manager.backupFileExtension = "backup";
 }

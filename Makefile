@@ -18,4 +18,4 @@ hm-switch:
 	home-manager switch --flake . -b backup
 
 secrets:
-	sops -i home/secrets.sops.yaml
+	sops -i home/secrets/secrets.sops.yaml

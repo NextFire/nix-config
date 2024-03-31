@@ -11,7 +11,7 @@
           ./modules/system.nix
         ];
         specialArgs = {
-          inherit inputs inputs' self' system username;
+          inherit inputs self inputs' self' system username;
           revision = self.rev or self.dirtyRev or null;
         };
       };
