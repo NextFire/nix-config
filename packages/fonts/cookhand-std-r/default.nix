@@ -1,9 +1,6 @@
 { lib, stdenvNoCC, ... }:
-let
-  name = "cookhand-std-r";
-in
 stdenvNoCC.mkDerivation {
-  inherit name;
+  name = "cookhand-std-r";
 
   src = lib.cleanSourceWith {
     src = ./.;

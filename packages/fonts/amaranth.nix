@@ -1,10 +1,7 @@
 { lib, stdenvNoCC, fetchFromGitHub, ... }:
-let
+stdenvNoCC.mkDerivation rec {
   name = "amaranth";
   version = "unstable-2021-07-21";
-in
-stdenvNoCC.mkDerivation {
-  inherit name version;
 
   src = fetchFromGitHub {
     owner = "googlefonts";
