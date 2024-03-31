@@ -14,6 +14,7 @@
 
   imports = [
     ./apps.nix
+    ./darwin-trampolines
     ./nix-core.nix
     ./secrets.nix
   ];
