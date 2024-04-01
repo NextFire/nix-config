@@ -35,7 +35,7 @@ function sync_icons() {
 	to_resources="$to/Contents/Resources/"
 
 	find "$to_resources" -name "*.icns" -delete
-	rsync --include "*.icns" --exclude "*" --recursive --copy-links "$from_resources" "$to_resources"
+	rsync --include "*.icns" --exclude "*" --recursive --links "$from_resources" "$to_resources"
 }
 
 function copy_paths() {

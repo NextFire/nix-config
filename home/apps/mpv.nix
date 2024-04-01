@@ -6,7 +6,7 @@ in
   sops.secrets."mpv/japan7.lua".path = "${config.xdg.configHome}/mpv/scripts/japan7.lua";
 
   programs.mpv = {
-    enable = true; # FIXME: mpv is installed twice on macOS
+    enable = true;
     scripts = with pkgs.mpvScripts; [ autoload ];
     bindings = {
       "AXIS_DOWN" = "add volume 1";

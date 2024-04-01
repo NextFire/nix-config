@@ -1,8 +1,6 @@
-{
-  flake = {
-    overlays = {
-      japan7 = import ./japan7.nix;
-      pipx = import ./pipx.nix;
-    };
-  };
+{ inputs, ... }: {
+  imports = [
+    inputs.flake-parts.flakeModules.easyOverlay
+    ./pipx.nix
+  ];
 }
