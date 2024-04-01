@@ -34,6 +34,7 @@
       "japan7/tap/syncplay-japan7"
       "keka"
       "macfuse"
+      "mpv"
       "musicbrainz-picard"
       "rancher"
       "spotify"

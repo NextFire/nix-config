@@ -107,8 +107,9 @@ function mktrampoline() {
 	local trampoline="$2"
 
 	if [[ ! -d $app ]]; then
-		echo "app path is not directory."
-		return 1
+		# echo "app path is not directory."
+		# return 1
+		exit 0
 	fi
 
 	cmd="do shell script \"open '$app'\""

@@ -1,13 +1,23 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 let
-  scriptPath = script: "${script}/share/mpv/scripts/${script.scriptName}";
+  scripts = with pkgs.mpvScripts; [ autoload ];
+  scriptsPkg = pkgs.buildEnv { name = "mpv-scripts"; paths = scripts; };
+  scriptPath =
+    if pkgs.stdenv.isDarwin then
+      script: "${scriptsPkg}/share/mpv/scripts/${script.scriptName}"
+    else
+      script: "${script}/share/mpv/scripts/${script.scriptName}";
+  mkColonList = lib.concatMapStrings (x: x + ":");
+  mkCommaList = lib.concatMapStrings (x: x + ",");
 in
 {
   sops.secrets."mpv/japan7.lua".path = "${config.xdg.configHome}/mpv/scripts/japan7.lua";
 
   programs.mpv = {
     enable = true;
-    scripts = with pkgs.mpvScripts; [ autoload ];
+    # FIXME: Workaround to avoid installing mpv twice on macOS (homebrew)
+    package = lib.mkIf pkgs.stdenv.isDarwin scriptsPkg;
+    scripts = lib.mkIf (!pkgs.stdenv.isDarwin) scripts;
     bindings = {
       "AXIS_DOWN" = "add volume 1";
       "AXIS_UP" = "add volume -1";
@@ -27,7 +37,7 @@ in
       "F" = "sub-reload";
     };
     config = {
-      scripts = scriptPath pkgs.mpvScripts.autoload;
+      scripts = mkColonList (map scriptPath scripts);
 
       #General
       # vo = "gpu";
@@ -49,8 +59,23 @@ in
       gamma-factor = 1.1218765935747068;
 
       #Priority
-      slang = "en,eng,fr,fra,fre";
-      alang = "ja,jp,jpn,en,eng,fr,fra,fre";
+      slang = mkCommaList [
+        "en"
+        "eng"
+        "fr"
+        "fra"
+        "fre"
+      ];
+      alang = mkCommaList [
+        "ja"
+        "jp"
+        "jpn"
+        "en"
+        "eng"
+        "fr"
+        "fra"
+        "fre"
+      ];
       audio-file-auto = "exact";
 
       #Subs
