@@ -4,10 +4,11 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "darwin-rebuild",
+      "label": "Apply configuration",
       "type": "shell",
-      "command": "make darwin-switch",
-      "group": "build"
+      "group": "build",
+      "osx": { "command": "darwin-rebuild switch --flake ." },
+      "linux": { "command": "home-manager switch --flake . -b backup" }
     }
   ]
 }

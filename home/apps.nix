@@ -38,7 +38,6 @@
         deno
         docker-client
         ffmpeg
-        gnumake
         httpie
         imagemagick
         mediainfo
