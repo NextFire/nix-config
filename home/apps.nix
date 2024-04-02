@@ -1,4 +1,5 @@
 { pkgs, self, self', ... }: {
+  nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
     self.overlays.default
   ];

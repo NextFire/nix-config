@@ -15,12 +15,12 @@
       kt = "kubectl -n kube-dashboard create token admin-user | pbcopy";
       kn = "kubectl get nodes -o wide -w";
       kp = "kubectl get pods -A -o wide -w";
-      kf = ''kubectl delete pod --field-selector="status.phase == Failed" -A'';
+      kf = "kubectl delete pod --field-selector='status.phase == Failed' -A";
       kd = "kubectl drain --ignore-daemonsets --delete-emptydir-data";
       mpvtct = "mpv --vo=tct --profile=sw-fast --vo-tct-algo=plain --vo-tct-256=yes --really-quiet";
       jotta = "rclone mount jotta-crypt: ~/rclone --vfs-cache-mode writes --daemon";
       sd = "rclone mount steamdeck:/run/media/mmcblk0p1 ~/rclone --vfs-cache-mode writes";
-      dinit = "nix flake new -t github:nix-community/nix-direnv .";
+      dinit = "nix flake init -t local#devshell && echo 'use flake' >> .envrc && direnv allow";
     };
     functions = {
       fish_user_key_bindings = ''
