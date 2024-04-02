@@ -43,6 +43,7 @@
         mediainfo
         nil
         nixpkgs-fmt
+        nodejs
         pipx
         python312
         tree
