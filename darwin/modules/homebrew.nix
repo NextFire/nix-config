@@ -1,25 +1,4 @@
-{ inputs, system, username, ... }: {
-  imports = [ inputs.nix-homebrew.darwinModules.nix-homebrew ];
-
-  nix-homebrew = {
-    # Install Homebrew under the default prefix
-    enable = true;
-
-    # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
-    enableRosetta = (system == "aarch64-darwin");
-
-    # User owning the Homebrew prefix
-    user = username;
-
-    # Automatically migrate existing Homebrew installations
-    autoMigrate = true;
-
-    # Optional: Enable fully-declarative tap management
-    #
-    # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
-    # mutableTaps = false;
-  };
-
+{
   homebrew = {
     enable = true;
     onActivation = {
@@ -27,17 +6,20 @@
       upgrade = true;
       cleanup = "zap";
     };
+    taps = [
+      "japan7/tap"
+    ];
     casks = [
+      "aegisub-japan7"
       "chromium"
       "discord"
-      "japan7/tap/aegisub-japan7"
-      "japan7/tap/syncplay-japan7"
       "keka"
       "macfuse"
       "mpv"
       "musicbrainz-picard"
       "rancher"
       "spotify"
+      "syncplay-japan7"
       "transmission"
       "vagrant"
       "virtualbox"
