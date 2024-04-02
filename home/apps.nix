@@ -34,6 +34,7 @@
   home.packages =
     let
       nixPkgs = with pkgs; [
+        corepack
         deno
         docker-client
         ffmpeg
