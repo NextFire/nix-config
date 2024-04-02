@@ -35,31 +35,22 @@
   home.packages =
     let
       nixPkgs = with pkgs; [
-        age
         deno
         docker-client
-        edgedb
         fenix.stable.minimalToolchain
         ffmpeg
         gnumake
-        go
         httpie
         imagemagick
         mediainfo
-        meson
         nil
         nixpkgs-fmt
-        nodejs_20
-        pandoc
         pipx
-        pkg-config
         python312
-        tectonic
         tree
         typst
         uv
         wget
-        yq
       ];
       selfPkgs = with self'.packages; [
         amaranth

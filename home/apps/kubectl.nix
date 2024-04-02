@@ -1,11 +1,8 @@
 { pkgs, inputs', config, lib, ... }: {
   home.packages = with pkgs; [
-    helmfile
     inputs'.krewfile.packages.default
     krew
     kubectl
-    kubernetes-helm
-    kustomize
     stern
   ];
 
