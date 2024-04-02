@@ -41,3 +41,9 @@ nix run home-manager/master -- switch --flake . -b backup
 nix flake update
 home-manager switch --flake . -b backup
 ```
+
+## Nix dev shells
+
+```sh
+nix develop .#<shell>
+```

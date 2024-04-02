@@ -1,6 +1,5 @@
-{ pkgs, inputs, self, self', ... }: {
+{ pkgs, self, self', ... }: {
   nixpkgs.overlays = [
-    inputs.fenix.overlays.default
     self.overlays.default
   ];
 
@@ -37,7 +36,6 @@
       nixPkgs = with pkgs; [
         deno
         docker-client
-        fenix.stable.minimalToolchain
         ffmpeg
         gnumake
         httpie
