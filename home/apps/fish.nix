@@ -5,9 +5,7 @@
     enable = true;
     loginShellInit = ''
       # set -x JAVA_HOME (/usr/libexec/java_home)
-      set -x GOPATH ~/.go
       fish_add_path -P ~/.local/bin
-      fish_add_path -aP ~/.krew/bin
     '';
     shellAbbrs = {
       uvp = "uv pip";
@@ -22,6 +20,7 @@
       mpvtct = "mpv --vo=tct --profile=sw-fast --vo-tct-algo=plain --vo-tct-256=yes --really-quiet";
       jotta = "rclone mount jotta-crypt: ~/rclone --vfs-cache-mode writes --daemon";
       sd = "rclone mount steamdeck:/run/media/mmcblk0p1 ~/rclone --vfs-cache-mode writes";
+      dinit = "nix flake new -t github:nix-community/nix-direnv .";
     };
     functions = {
       fish_user_key_bindings = ''
@@ -31,13 +30,6 @@
       history-backup = ''
         set hostname (python3 -c "import socket; print(socket.gethostname())")
         rclone copyto $HOME/.local/share/fish/fish_history jotta-crypt:local_secrets/$hostname/fish_history -P
-      '';
-      dinit = ''
-        nix flake new -t github:nix-community/nix-direnv .
-      '';
-      duse = ''
-        echo use flake local#$argv[1] >> .envrc
-        direnv allow
       '';
     };
   };

@@ -7,7 +7,6 @@
   imports = [
     ./apps/aegisub
     ./apps/ansible.nix
-    ./apps/bash.nix
     ./apps/fish.nix
     ./apps/git.nix
     ./apps/htop.nix

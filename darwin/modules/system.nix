@@ -3,17 +3,11 @@
   # $ nix-env -qaP | grep wget
   # environment.systemPackages = with pkgs; [ ];
 
+  environment.shells = [ pkgs.fish ];
+
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs.zsh.enable = true; # default shell on catalina
   programs.fish.enable = true;
-
-  environment = {
-    shells = [ pkgs.fish ];
-    variables = {
-      LANG = "en_US.UTF-8";
-      EDITOR = "vim";
-    };
-  };
 
   security.pam.enableSudoTouchIdAuth = true;
 

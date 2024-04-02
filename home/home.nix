@@ -18,4 +18,14 @@
     ./nix-core.nix
     ./secrets
   ];
+
+  home.sessionVariables = {
+    EDITOR = "vim";
+    GOPATH = "$HOME/.go";
+    LANG = "en_US.UTF-8";
+  };
+
+  home.sessionPath = [
+    "$HOME/.krew/bin"
+  ];
 }
