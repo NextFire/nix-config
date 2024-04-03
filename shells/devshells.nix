@@ -1,4 +1,12 @@
 { pkgs, ... }: {
+  go = pkgs.mkShell {
+    packages = with pkgs; [
+      go
+      go-tools
+      gopls
+    ];
+  };
+
   helmfile = pkgs.mkShell {
     packages =
       let
