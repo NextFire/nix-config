@@ -1,7 +1,11 @@
-{ lib, stdenvNoCC, fetchFromGitHub, ... }:
+{ lib
+, stdenvNoCC
+, fetchFromGitHub
+, ...
+}:
 stdenvNoCC.mkDerivation rec {
   name = "amaranth";
-  version = "unstable-2021-07-21";
+  version = "unstable_2021-07-21";
 
   src = fetchFromGitHub {
     owner = "googlefonts";
