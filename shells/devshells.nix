@@ -1,32 +1,32 @@
 { pkgs, ... }: {
-  go = pkgs.mkShell {
-    packages = with pkgs; [
+  go = with pkgs; mkShell {
+    packages = [
       go
       go-tools
       gopls
     ];
   };
 
-  helmfile = pkgs.mkShell {
+  helmfile = with pkgs; mkShell {
     packages =
       let
-        kubernetes-helm-wrapped = with pkgs; wrapHelm kubernetes-helm {
-          plugins = with pkgs.kubernetes-helmPlugins; [
+        kubernetes-helm-wrapped = wrapHelm kubernetes-helm {
+          plugins = with kubernetes-helmPlugins; [
             helm-diff
             helm-git
             helm-s3
             helm-secrets
           ];
         };
-        helmfile-wrapped = pkgs.helmfile-wrapped.override {
+        helmfile-wrapped-overrided = helmfile-wrapped.override {
           inherit (kubernetes-helm-wrapped) pluginsDir;
         };
       in
-      [ kubernetes-helm-wrapped helmfile-wrapped ];
+      [ kubernetes-helm-wrapped helmfile-wrapped-overrided ];
   };
 
-  rust = pkgs.mkShell {
-    packages = with pkgs; [
+  rust = with pkgs; mkShell {
+    packages = [
       fenix.stable.minimalToolchain
     ];
   };
