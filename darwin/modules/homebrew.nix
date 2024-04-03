@@ -25,7 +25,6 @@
       "virtualbox"
       "visual-studio-code"
     ];
-    caskArgs.no_quarantine = true;
     masApps = {
       "AdGuard for Safari" = 1440147259;
       "Bitwarden" = 1352778147;
