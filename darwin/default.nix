@@ -1,5 +1,6 @@
 { inputs, self, ... }: {
   systems = [ "aarch64-darwin" "x86_64-darwin" ];
+
   perSystem = { inputs', self', system, ... }:
     let
       mkDarwin = { username }: inputs.darwin.lib.darwinSystem {

@@ -1,5 +1,6 @@
 { inputs, ... }: {
   imports = [ inputs.flake-parts.flakeModules.easyOverlay ];
+
   perSystem = { pkgs, lib, ... }: {
     overlayAttrs = {
       # FIXME: https://github.com/NixOS/nixpkgs/pull/298528

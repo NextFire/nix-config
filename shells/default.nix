@@ -8,8 +8,10 @@
         self.overlays.default
       ];
     };
+
     devShells = import ./devshells.nix args;
   };
+
   flake = {
     templates.devshell = {
       path = ./template;
