@@ -1,14 +1,14 @@
 { pkgs, ... }: {
-  go = with pkgs; mkShell {
-    packages = [
+  go = pkgs.mkShell {
+    packages = with pkgs; [
       go
       go-tools
       gopls
     ];
   };
 
-  helmfile = with pkgs; mkShell {
-    packages =
+  helmfile = pkgs.mkShell {
+    packages = with pkgs;
       let
         kubernetes-helm-wrapped = wrapHelm kubernetes-helm {
           plugins = with kubernetes-helmPlugins; [
@@ -29,8 +29,8 @@
       ];
   };
 
-  rust = with pkgs; mkShell {
-    packages = [
+  rust = pkgs.mkShell {
+    packages = with pkgs; [
       fenix.stable.minimalToolchain
     ];
   };

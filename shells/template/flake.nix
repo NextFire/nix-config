@@ -16,8 +16,8 @@
           ];
         };
 
-        devShells.default = with pkgs; mkShell {
-          packages = [
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
           ];
         };
       };
