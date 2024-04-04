@@ -22,7 +22,11 @@
           inherit (kubernetes-helm-wrapped) pluginsDir;
         };
       in
-      [ kubernetes-helm-wrapped helmfile-wrapped-overrided ];
+      [
+        helmfile-wrapped-overrided
+        kubernetes-helm-wrapped
+        kustomize
+      ];
   };
 
   rust = with pkgs; mkShell {
