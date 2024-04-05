@@ -1,6 +1,5 @@
 { lib
 , stdenvNoCC
-, ...
 }:
 stdenvNoCC.mkDerivation {
   name = "cookhand-std-r";

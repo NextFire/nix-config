@@ -32,6 +32,10 @@
       url = "github:Japan7/nixpkgs-japan7";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    amaranth-src = {
+      url = "github:googlefonts/amaranth";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ flake-parts, ... }:

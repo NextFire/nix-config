@@ -1,18 +1,12 @@
 { lib
 , stdenvNoCC
-, fetchFromGitHub
-, ...
+, amaranth-src
 }:
-stdenvNoCC.mkDerivation rec {
+stdenvNoCC.mkDerivation {
   name = "amaranth";
-  version = "unstable_2021-07-21";
+  version = builtins.substring 0 7 amaranth-src.rev;
 
-  src = fetchFromGitHub {
-    owner = "googlefonts";
-    repo = name;
-    rev = "f4f60a57f54a04186030913a86e3e56105bbe848";
-    hash = "sha256-2endXDoqh58gXMz6bcOTUpvKJPYbWdnv6qGNkeQT2QI=";
-  };
+  src = amaranth-src;
 
   installPhase = ''
     runHook preInstall
