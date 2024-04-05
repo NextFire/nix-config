@@ -6,6 +6,7 @@
     loginShellInit = ''
       # set -x JAVA_HOME (/usr/libexec/java_home)
       fish_add_path -P ~/.local/bin
+      fish_add_path -aP ~/.rd/bin
     '';
     shellAbbrs = {
       uvp = "uv pip";

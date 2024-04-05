@@ -37,7 +37,6 @@
       nixPkgs = with pkgs; [
         corepack
         deno
-        docker-client
         ffmpeg
         httpie
         imagemagick
