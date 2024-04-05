@@ -2,8 +2,9 @@
 , stdenvNoCC
 , amaranth-src
 }:
-stdenvNoCC.mkDerivation {
-  name = "amaranth";
+stdenvNoCC.mkDerivation rec {
+  name = "${pname}-${version}";
+  pname = "amaranth";
   version = builtins.substring 0 7 amaranth-src.rev;
 
   src = amaranth-src;

@@ -1,8 +1,10 @@
 { lib
 , stdenvNoCC
 }:
-stdenvNoCC.mkDerivation {
-  name = "cookhand-std-r";
+stdenvNoCC.mkDerivation rec {
+  name = "${pname}-${version}";
+  pname = "cookhand-std-r";
+  version = "UNKNOWN";
 
   src = lib.cleanSourceWith {
     src = ./.;
