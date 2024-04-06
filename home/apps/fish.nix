@@ -40,6 +40,10 @@
         echo "use flake local#$argv[1]" >> .envrc
         direnv allow
       '';
+      ddeny = ''
+        direnv deny
+        rm -r .direnv/
+      '';
     };
   };
 }
