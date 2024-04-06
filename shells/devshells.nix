@@ -29,6 +29,14 @@
       ];
   };
 
+  meson = pkgs.mkShell {
+    packages = with pkgs; [
+      meson
+      ninja
+      pkg-config
+    ];
+  };
+
   rust = pkgs.mkShell {
     packages = with pkgs; [
       fenix.stable.minimalToolchain

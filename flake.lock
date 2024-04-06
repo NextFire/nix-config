@@ -16,6 +16,22 @@
         "type": "github"
       }
     },
+    "dakara_check-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1712192725,
+        "narHash": "sha256-VZhDHq64XlIkS9mGvPLEA5i3gm1xPlTYB/uPveOH5Cw=",
+        "owner": "Japan7",
+        "repo": "dakara_check",
+        "rev": "2c6610fce4accf5c9e7a2fde756f3f67d74ed7ec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Japan7",
+        "repo": "dakara_check",
+        "type": "github"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -44,17 +60,33 @@
         "rust-analyzer-src": "rust-analyzer-src"
       },
       "locked": {
-        "lastModified": 1712211755,
-        "narHash": "sha256-KIJA4OvXFDXEeu7wstFDCxqZEfjaPQIowpzNww48TUw=",
+        "lastModified": 1712298178,
+        "narHash": "sha256-590fpCPXYAkaAeBz/V91GX4/KGzPObdYtqsTWzT6AhI=",
         "owner": "nix-community",
         "repo": "fenix",
-        "rev": "39763c6e23a8423af316b85a74bad0cc5bc88d86",
+        "rev": "569b5b5781395da08e7064e825953c548c26af76",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
         "repo": "fenix",
         "type": "github"
+      }
+    },
+    "ffmpegaacsucks-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1711973206,
+        "narHash": "sha256-ERnCxr562drGfdWomT7zp9NyereBOivtGucYcDM16+k=",
+        "ref": "refs/heads/master",
+        "rev": "e46c1ef505ff6cc921295f3a403ddf48a46343e1",
+        "revCount": 62,
+        "type": "git",
+        "url": "https://git.odrling.xyz/ffmpegaacsucks"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.odrling.xyz/ffmpegaacsucks"
       }
     },
     "flake-parts": {
@@ -118,11 +150,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1712264884,
-        "narHash": "sha256-+NzRxqVbL8sPBfW3odZ62KeR6ZdoGv5PxvQwUNFSR98=",
+        "lastModified": 1712317700,
+        "narHash": "sha256-rnkQ6qMhlxfjpCECkTMlFXHU/88QvC5KpdJWq5H6F1E=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "9de3aab0917914baad72e32023834f9b39e77610",
+        "rev": "782eed8bb64b27acaeb7c17be4a095c85e65717f",
         "type": "github"
       },
       "original": {
@@ -133,17 +165,20 @@
     },
     "japan7": {
       "inputs": {
+        "dakara_check-src": "dakara_check-src",
+        "ffmpegaacsucks-src": "ffmpegaacsucks-src",
         "flake-parts": "flake-parts_2",
         "nixpkgs": [
           "nixpkgs"
-        ]
+        ],
+        "syncplay-src": "syncplay-src"
       },
       "locked": {
-        "lastModified": 1712167732,
-        "narHash": "sha256-ZiWYS4h4D2SV98WD/X8VrONXu61F5U6S3/9AOIuwWH8=",
+        "lastModified": 1712289361,
+        "narHash": "sha256-eYAVVWOvYTVAWor+yBQd/tjaGh4IW3A6L5jvIqUqbJk=",
         "owner": "Japan7",
         "repo": "nixpkgs-japan7",
-        "rev": "64499bbd88d83c4ffec38984b1171ee101560b1c",
+        "rev": "05e8f62aefa59ab19dc8282247cf462a6b5d4247",
         "type": "github"
       },
       "original": {
@@ -289,6 +324,22 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "syncplay-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1709314949,
+        "narHash": "sha256-emGFzfJ1xmHiLvQ3gwp/Wt2QNqzaTslz5MCmxuk2hrE=",
+        "owner": "odrling",
+        "repo": "syncplay",
+        "rev": "41d0d952d1ed2b51994d3b9a64665540fdffb91d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "odrling",
+        "repo": "syncplay",
         "type": "github"
       }
     },
